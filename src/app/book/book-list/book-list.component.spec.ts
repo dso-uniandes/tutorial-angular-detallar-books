@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Editorial } from '../../editorial/editorial';
 import { Book } from '../book';
 import { BookService } from '../book.service';
+import { BookDetail } from '../book-detail';
 
 describe('BookListComponent', () => {
  let component: BookListComponent;
@@ -33,18 +34,20 @@ describe('BookListComponent', () => {
      faker.lorem.sentence()
    );
 
-   for(let i = 0; i < 10; i++) {
-     const book = new Book(
-       faker.number.int(),
-       faker.lorem.sentence(),
-       faker.lorem.sentence(),
-       faker.lorem.sentence(),
-       faker.image.url(),
-       faker.date.past(),
-       editorial,
-     );
-     component.books.push(book);
-   }
+    for(let i = 0; i < 10; i++) {
+      const book = new BookDetail(
+        faker.number.int(),
+        faker.lorem.sentence(),
+        faker.lorem.sentence(),
+        faker.lorem.sentence(),
+        faker.image.url(),
+        faker.date.past(),
+        editorial,
+        [],
+        []
+      );
+      component.books.push(book);
+    }
    fixture.detectChanges();
    debug = fixture.debugElement;
  });
